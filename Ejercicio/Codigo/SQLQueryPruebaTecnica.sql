@@ -79,3 +79,35 @@ UPDATE VENTAS
 SET Venta_Neta = Venta - Descuento
 
 SELECT * FROM VENTAS;
+
+
+-- 2.- Se requiere ver las ventas de cada tienda para las festividades del mes de diciembre; Navidad
+-- (22 a 24 de diciembre) y Año Nuevo (29 a 31 de diciembre). Y se quiere ver cuáles son las 10
+-- tiendas con mayor venta. Realiza la consulta para lo solicitado.
+
+Select TOP 10 Tienda, Venta, Fecha
+From VENTAS
+WHERE Fecha BETWEEN '20221222' AND '20221224'
+
+Select TOP 10 Tienda, Venta, Fecha
+From VENTAS
+WHERE Fecha BETWEEN '20221229' AND '20221231'
+
+-- Se hace la implementación de una nueva base de datos, de la cual no se tiene conocimiento
+-- alguno. Se quiere buscar dentro de todas las tablas de la base, columnas semejantes a las de la
+-- tabla VENTAS. ¿Cómo harías esta investigación?
+
+-- Podemos usar LIKE para que nos devuelva columnas o tablas que contienen nombres similares, pero esto no garantiza que exista una igual a Venta. 
+SELECT TABLE_NAME, COLUMN_NAME, DATA_TYPE
+FROM INFORMATION_SCHEMA.COLUMNS
+WHERE COLUMN_NAME LIKE '%ID%' 
+  OR COLUMN_NAME LIKE '%Tienda%' 
+  OR COLUMN_NAME LIKE '%Producto%' 
+  OR COLUMN_NAME LIKE '%Venta%' 
+  OR COLUMN_NAME LIKE '%Descuento%' 
+  OR COLUMN_NAME LIKE '%Fecha%'
+
+-- En este caso analizaría todas con la siguiente consulta para ver cual es la que mas se asemeja a ventas y a las columnas que ya tenemos. Esta consulta nos regresa el nombre
+-- De la tabla, la columna (nombre) y el tipo de dato.
+SELECT TABLE_NAME, COLUMN_NAME, DATA_TYPE
+FROM INFORMATION_SCHEMA.COLUMNS
