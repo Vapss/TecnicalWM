@@ -1,2 +1,4 @@
 # TecnicalWM
- Ejercicio Tecnico
+ Ejercicio Tecnico ejecutado en SQL y Python
+
+## Ejercicio 1
